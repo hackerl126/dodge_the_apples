@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://vnyrmlo2tote"]
+
+[ext_resource type="Texture2D" uid="uid://ceupgy7uy6god" path="res://art/apple.png" id="1_wrjr2"]
+[ext_resource type="Script" path="res://Mob.gd" id="1_xrdvd"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nivl0"]
+radius = 46.0
+height = 92.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_at10i"]
+radius = 46.0
+height = 92.0
+
+[node name="Mob" type="RigidBody2D" groups=["mobs"]]
+gravity_scale = 0.0
+script = ExtResource("1_xrdvd")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_nivl0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_at10i")
+
+[node name="VisibilityNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_wrjr2")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_visibility_notifier_2d_screen_exited"]
