@@ -1,0 +1,82 @@
+[gd_scene load_steps=8 format=3 uid="uid://dpp6hj5ple42d"]
+
+[ext_resource type="Script" path="res://Main.gd" id="1_e45ou"]
+[ext_resource type="PackedScene" uid="uid://cy0tmo76c263r" path="res://Player.tscn" id="2_h5wue"]
+[ext_resource type="AudioStream" uid="uid://bp527tars3d1q" path="res://art/House In a Forest Loop.ogg" id="3_1sing"]
+[ext_resource type="PackedScene" uid="uid://be00u086xvvyr" path="res://HUD.tscn" id="3_3v8pn"]
+[ext_resource type="AudioStream" uid="uid://nmlcocp68anf" path="res://art/gameover.wav" id="4_osddi"]
+[ext_resource type="PackedScene" uid="uid://7ycj0tk7hjob" path="res://Fireworks.tscn" id="4_wmuqq"]
+
+[sub_resource type="Curve2D" id="Curve2D_fhr4g"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 1404, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 720, 0, 0, 0, 0, 0, 720, 1404)
+}
+point_count = 4
+
+[node name="Main" type="Node"]
+script = ExtResource("1_e45ou")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.227451, 0.219608, 0.137255, 1)
+
+[node name="Fireworks" parent="." instance=ExtResource("4_wmuqq")]
+
+[node name="Player" parent="." instance=ExtResource("2_h5wue")]
+
+[node name="MobTimer" type="Timer" parent="."]
+
+[node name="ScoreTimer" type="Timer" parent="."]
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="StartPosition" type="Control" parent="."]
+layout_mode = 3
+anchor_left = 0.5
+anchor_top = 0.58
+anchor_right = 0.5
+anchor_bottom = 0.58
+
+[node name="MobPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_fhr4g")
+
+[node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
+position = Vector2(0, 1404)
+rotation = -1.5708
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_1sing")
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_osddi")
+
+[node name="HUD" parent="." instance=ExtResource("3_3v8pn")]
+
+[connection signal="hit" from="Player" to="." method="game_over"]
+[connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
+[connection signal="DownDown" from="HUD" to="." method="change_background_color"]
+[connection signal="DownDown" from="HUD" to="Player" method="_on_HUD_DownDown"]
+[connection signal="DownUp" from="HUD" to="Player" method="_on_HUD_DownUp"]
+[connection signal="LeftDown" from="HUD" to="." method="change_background_color"]
+[connection signal="LeftDown" from="HUD" to="Player" method="_on_HUD_LeftDown"]
+[connection signal="LeftUp" from="HUD" to="Player" method="_on_HUD_LeftUp"]
+[connection signal="RightDown" from="HUD" to="." method="change_background_color"]
+[connection signal="RightDown" from="HUD" to="Player" method="_on_HUD_RightDown"]
+[connection signal="RightUp" from="HUD" to="Player" method="_on_HUD_RightUp"]
+[connection signal="ShootDown" from="HUD" to="." method="change_background_color"]
+[connection signal="ShootDown" from="HUD" to="Player" method="_on_HUD_ShootDown"]
+[connection signal="ShootUp" from="HUD" to="Player" method="_on_HUD_ShootUp"]
+[connection signal="UpDown" from="HUD" to="." method="change_background_color"]
+[connection signal="UpDown" from="HUD" to="Player" method="_on_HUD_UpDown"]
+[connection signal="UpUp" from="HUD" to="Player" method="_on_HUD_UpUp"]
+[connection signal="notrevive" from="HUD" to="." method="_on_HUD_notrevive"]
+[connection signal="revive" from="HUD" to="." method="_on_HUD_revive"]
+[connection signal="start_game" from="HUD" to="." method="new_game"]
