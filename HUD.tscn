@@ -1,0 +1,238 @@
+[gd_scene load_steps=11 format=3 uid="uid://be00u086xvvyr"]
+
+[ext_resource type="Script" path="res://HUD.gd" id="1_72kk7"]
+[ext_resource type="FontFile" uid="uid://b7r5r1natiqe2" path="res://fonts/仓耳玄三04-W05.ttf" id="2_rsptl"]
+[ext_resource type="Texture2D" uid="uid://cuwlla2df284g" path="res://art/ButtonReleased.png" id="3_yv7sh"]
+[ext_resource type="Texture2D" uid="uid://kbrw3f66ridn" path="res://art/ButtonPressed.png" id="4_2x7kh"]
+[ext_resource type="Texture2D" uid="uid://b1vco0lf3lwab" path="res://art/StartButton.png" id="5_otiqm"]
+[ext_resource type="VideoStream" path="res://art/Revive.ogv" id="6_igrm7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6nlyg"]
+font = ExtResource("2_rsptl")
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_w17vf"]
+font = ExtResource("2_rsptl")
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_t6n55"]
+font = ExtResource("2_rsptl")
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_72drk"]
+font = ExtResource("2_rsptl")
+font_size = 40
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_72kk7")
+
+[node name="ScoreLabel" type="Label" parent="."]
+anchors_preset = -1
+anchor_top = 0.05
+anchor_right = 1.0
+anchor_bottom = 0.05
+grow_horizontal = 2
+text = "分数：0"
+label_settings = SubResource("LabelSettings_6nlyg")
+horizontal_alignment = 1
+
+[node name="MessageLabel" type="Label" parent="."]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -42.0
+offset_bottom = 42.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "躲避林檎"
+label_settings = SubResource("LabelSettings_w17vf")
+horizontal_alignment = 1
+
+[node name="MessageTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="UpLabel" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.65
+anchor_right = 0.5
+anchor_bottom = 0.65
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+text = "上"
+label_settings = SubResource("LabelSettings_t6n55")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Up" type="TouchScreenButton" parent="UpLabel"]
+position = Vector2(-12, -10)
+texture_normal = ExtResource("3_yv7sh")
+texture_pressed = ExtResource("4_2x7kh")
+
+[node name="DownLabel" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.9
+anchor_right = 0.5
+anchor_bottom = 0.9
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+text = "下"
+label_settings = SubResource("LabelSettings_t6n55")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Down" type="TouchScreenButton" parent="DownLabel"]
+position = Vector2(-12, -10)
+texture_normal = ExtResource("3_yv7sh")
+texture_pressed = ExtResource("4_2x7kh")
+
+[node name="LeftLabel" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.775
+anchor_right = 0.2
+anchor_bottom = 0.775
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+text = "左"
+label_settings = SubResource("LabelSettings_t6n55")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Left" type="TouchScreenButton" parent="LeftLabel"]
+position = Vector2(-12, -10)
+texture_normal = ExtResource("3_yv7sh")
+texture_pressed = ExtResource("4_2x7kh")
+
+[node name="RightLabel" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.8
+anchor_top = 0.775
+anchor_right = 0.8
+anchor_bottom = 0.775
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+text = "右"
+label_settings = SubResource("LabelSettings_t6n55")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Right" type="TouchScreenButton" parent="RightLabel"]
+position = Vector2(-12, -10)
+texture_normal = ExtResource("3_yv7sh")
+texture_pressed = ExtResource("4_2x7kh")
+
+[node name="ShootLabel" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.8
+anchor_top = 0.65
+anchor_right = 0.8
+anchor_bottom = 0.65
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+text = "射击"
+label_settings = SubResource("LabelSettings_t6n55")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Shoot" type="TouchScreenButton" parent="ShootLabel"]
+position = Vector2(-12, -10)
+texture_normal = ExtResource("3_yv7sh")
+texture_pressed = ExtResource("4_2x7kh")
+
+[node name="Label6" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.84
+anchor_right = 0.5
+anchor_bottom = 0.84
+offset_left = -50.0
+offset_top = -30.0
+offset_right = 50.0
+offset_bottom = 30.0
+text = "开始"
+label_settings = SubResource("LabelSettings_72drk")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Start" type="TouchScreenButton" parent="Label6"]
+position = Vector2(-85, -24)
+scale = Vector2(2.5, 1)
+texture_normal = ExtResource("5_otiqm")
+
+[node name="Label7" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.84
+anchor_right = 0.5
+anchor_bottom = 0.84
+offset_left = -50.0
+offset_top = -30.0
+offset_right = 50.0
+offset_bottom = 30.0
+text = "复活"
+label_settings = SubResource("LabelSettings_72drk")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Revive" type="TouchScreenButton" parent="Label7"]
+position = Vector2(-85, -24)
+scale = Vector2(2.5, 1)
+texture_normal = ExtResource("5_otiqm")
+
+[node name="Label8" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.74
+anchor_right = 0.5
+anchor_bottom = 0.74
+offset_left = -60.0
+offset_top = -30.0
+offset_right = 50.0
+offset_bottom = 30.0
+text = "不用了"
+label_settings = SubResource("LabelSettings_72drk")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NotRevive" type="TouchScreenButton" parent="Label8"]
+position = Vector2(-75, -24)
+scale = Vector2(2.5, 1)
+texture_normal = ExtResource("5_otiqm")
+
+[node name="ReviveVideo" type="VideoStreamPlayer" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("6_igrm7")
+expand = true
+
+[connection signal="timeout" from="MessageTimer" to="." method="_on_MessageTimer_timeout"]
+[connection signal="pressed" from="UpLabel/Up" to="." method="_on_Up_pressed"]
+[connection signal="released" from="UpLabel/Up" to="." method="_on_Up_released"]
+[connection signal="pressed" from="DownLabel/Down" to="." method="_on_Down_pressed"]
+[connection signal="released" from="DownLabel/Down" to="." method="_on_Down_released"]
+[connection signal="pressed" from="LeftLabel/Left" to="." method="_on_Left_pressed"]
+[connection signal="released" from="LeftLabel/Left" to="." method="_on_Left_released"]
+[connection signal="pressed" from="RightLabel/Right" to="." method="_on_Right_pressed"]
+[connection signal="released" from="RightLabel/Right" to="." method="_on_Right_released"]
+[connection signal="pressed" from="ShootLabel/Shoot" to="." method="_on_Shoot_pressed"]
+[connection signal="released" from="ShootLabel/Shoot" to="." method="_on_Shoot_released"]
+[connection signal="pressed" from="Label6/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="Label7/Revive" to="." method="_on_Revive_pressed"]
+[connection signal="pressed" from="Label8/NotRevive" to="." method="_on_NotRevive_pressed"]
