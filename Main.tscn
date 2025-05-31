@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dpp6hj5ple42d"]
 
-[ext_resource type="Script" path="res://Main.gd" id="1_e45ou"]
+[ext_resource type="Script" uid="uid://cekbttdnih3yc" path="res://Main.gd" id="1_e45ou"]
 [ext_resource type="PackedScene" uid="uid://cy0tmo76c263r" path="res://Player.tscn" id="2_h5wue"]
 [ext_resource type="AudioStream" uid="uid://bp527tars3d1q" path="res://art/House In a Forest Loop.ogg" id="3_1sing"]
 [ext_resource type="PackedScene" uid="uid://be00u086xvvyr" path="res://HUD.tscn" id="3_3v8pn"]
