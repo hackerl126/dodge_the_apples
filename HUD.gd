@@ -21,13 +21,30 @@ func _ready():
 	$Label7.hide()
 	$Label8.hide()
 	$ReviveVideo.hide()
+	
+	$UpLabel/Up.pressed.connect(func(): emit_signal("UpDown"))
+	$UpLabel/Up.released.connect(func(): emit_signal("UpUp"))
+	$DownLabel/Down.pressed.connect(func(): emit_signal("DownDown"))
+	$DownLabel/Down.released.connect(func(): emit_signal("DownUp"))
+	$LeftLabel/Left.pressed.connect(func(): emit_signal("LeftDown"))
+	$LeftLabel/Left.released.connect(func(): emit_signal("LeftUp"))
+	$RightLabel/Right.pressed.connect(func(): emit_signal("RightDown"))
+	$RightLabel/Right.released.connect(func(): emit_signal("RightUp"))
+	
+	$ShootLabel/Shoot.pressed.connect(func(): emit_signal("ShootDown"))
+	$ShootLabel/Shoot.released.connect(func(): emit_signal("ShootUp"))
+	
+	$Label6/Start.pressed.connect(_on_Start_pressed)
+	$Label7/Revive.pressed.connect(_on_Revive_pressed)
+	$Label8/NotRevive.pressed.connect(_on_NotRevive_pressed)
+	
+	$MessageTimer.timeout.connect(func(): $MessageLabel.hide())
 
 func show_message(text,time):
 	$MessageTimer.wait_time=time
 	$MessageLabel.text = text
 	$MessageLabel.show()
 	$MessageTimer.start()
-
 
 func show_game_over():
 	show_message("你被林檎击中力\n（恼）",1)
@@ -38,28 +55,18 @@ func show_game_over():
 	$Label7.show()
 	$Label8.show()
 
-
-
 func restart_game():
 	$MessageLabel.text = "躲避林檎"
 	$MessageLabel.show()
 	await get_tree().create_timer(1).timeout
 	$Label6.show()
 
-
 func update_score(score):
 	$ScoreLabel.text = "分数："+str(score)
-
 
 func _on_StartButton_pressed():
 	$StartButton.hide()
 	emit_signal("start_game")
-
-
-func _on_MessageTimer_timeout():
-	$MessageLabel.hide()
-	
-
 
 func ctrlShow():
 	$UpLabel.show()
@@ -67,8 +74,7 @@ func ctrlShow():
 	$LeftLabel.show()
 	$RightLabel.show()
 	$ShootLabel.show()
-	
-	
+
 func ctrlHide():
 	$UpLabel.hide()
 	$DownLabel.hide()
@@ -76,52 +82,9 @@ func ctrlHide():
 	$RightLabel.hide()
 	$ShootLabel.hide()
 
-
-
-func _on_Up_pressed():
-	emit_signal("UpDown")
-
-
-func _on_Up_released():
-	emit_signal("UpUp")
-
-
-func _on_Down_pressed():
-	emit_signal("DownDown")
-
-
-func _on_Down_released():
-	emit_signal("DownUp")
-
-
-func _on_Left_pressed():
-	emit_signal("LeftDown")
-
-
-func _on_Left_released():
-	emit_signal("LeftUp")
-
-
-func _on_Right_pressed():
-	emit_signal("RightDown")
-
-
-func _on_Right_released():
-	emit_signal("RightUp")
-
-
-func _on_Shoot_pressed():
-	emit_signal("ShootDown")
-
-
-func _on_Shoot_released():
-	emit_signal("ShootUp")
-
-
 func _on_Start_pressed():
 	emit_signal("start_game")
 	$Label6.hide()
-
 
 func _on_Revive_pressed():
 	$Label7.hide()
@@ -132,13 +95,9 @@ func _on_Revive_pressed():
 	$ReviveVideo.hide()
 	emit_signal("revive")
 
-
 func playvideo():
-
 	$ReviveVideo.play()
 	await get_tree().create_timer(10).timeout
-
-
 
 func _on_NotRevive_pressed():
 	emit_signal("notrevive")

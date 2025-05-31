@@ -35,10 +35,10 @@ shape = SubResource("CapsuleShape2D_ptpga")
 position = Vector2(-25, -35)
 scale = Vector2(0.45, 0.4)
 amount = 3000
-process_material = SubResource("ParticleProcessMaterial_kxp8u")
 lifetime = 0.8
 speed_scale = 2.0
 trail_lifetime = 0.1
+process_material = SubResource("ParticleProcessMaterial_kxp8u")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
@@ -46,6 +46,3 @@ texture = ExtResource("2_q0bsd")
 
 [node name="ShootTimer" type="Timer" parent="."]
 wait_time = 0.5
-
-[connection signal="body_entered" from="." to="." method="_on_Player_body_entered"]
-[connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]

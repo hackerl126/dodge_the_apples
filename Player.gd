@@ -16,6 +16,8 @@ var startshoot=true
 
 
 func _ready():
+	self.body_entered.connect(_on_Player_body_entered)
+	$ShootTimer.timeout.connect(_on_ShootTimer_timeout)
 	screen_size = get_viewport_rect().size
 	hide()
 

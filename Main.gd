@@ -6,6 +6,7 @@ var revive=false
 var mobspeed=150
 var windowsize
 var curve:Curve2D
+
 func _ready():
 	randomize()
 	Global.world=self
@@ -18,8 +19,7 @@ func _ready():
 	curve.add_point(Vector2(windowsize.x,windowsize.y*0.9))
 	
 	$MobPath.curve=curve
-	
-	
+
 
 func _exit_tree():
 	Global.world=null

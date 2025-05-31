@@ -17,6 +17,3 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_jqmxs")
 
 [node name="VisibilityNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_visibility_notifier_2d_screen_exited"]

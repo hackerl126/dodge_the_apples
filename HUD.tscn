@@ -223,16 +223,3 @@ stream = ExtResource("6_igrm7")
 expand = true
 
 [connection signal="timeout" from="MessageTimer" to="." method="_on_MessageTimer_timeout"]
-[connection signal="pressed" from="UpLabel/Up" to="." method="_on_Up_pressed"]
-[connection signal="released" from="UpLabel/Up" to="." method="_on_Up_released"]
-[connection signal="pressed" from="DownLabel/Down" to="." method="_on_Down_pressed"]
-[connection signal="released" from="DownLabel/Down" to="." method="_on_Down_released"]
-[connection signal="pressed" from="LeftLabel/Left" to="." method="_on_Left_pressed"]
-[connection signal="released" from="LeftLabel/Left" to="." method="_on_Left_released"]
-[connection signal="pressed" from="RightLabel/Right" to="." method="_on_Right_pressed"]
-[connection signal="released" from="RightLabel/Right" to="." method="_on_Right_released"]
-[connection signal="pressed" from="ShootLabel/Shoot" to="." method="_on_Shoot_pressed"]
-[connection signal="released" from="ShootLabel/Shoot" to="." method="_on_Shoot_released"]
-[connection signal="pressed" from="Label6/Start" to="." method="_on_Start_pressed"]
-[connection signal="pressed" from="Label7/Revive" to="." method="_on_Revive_pressed"]
-[connection signal="pressed" from="Label8/NotRevive" to="." method="_on_NotRevive_pressed"]
