@@ -52,6 +52,7 @@ func new_game():
 	$HUD.show_message("3秒准备时间",3)
 	$Music.play()
 	$HUD.ctrlShow()
+	$HUD/Control.show()
 
 func _on_MobTimer_timeout():
 	add_mob()

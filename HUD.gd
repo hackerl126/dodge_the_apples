@@ -18,6 +18,8 @@ signal notrevive
 
 func _ready():
 	ctrlHide()
+	
+	$Control.hide()
 	$Label7.hide()
 	$Label8.hide()
 	$ReviveVideo.hide()
@@ -49,6 +51,8 @@ func show_message(text,time):
 func show_game_over():
 	show_message("你被林檎击中力\n（恼）",1)
 	ctrlHide()
+	
+	$Control.hide()
 	await $MessageTimer.timeout
 	show_message("是否\n看视频复活？",1)
 	$MessageTimer.stop()
