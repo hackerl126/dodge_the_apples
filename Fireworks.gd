@@ -6,4 +6,3 @@ func _ready():
 	$Control3/Firework3.emitting=true
 	$Control4/Firework4.emitting=true
 	$Control5/Firework5.emitting=true                                       
-

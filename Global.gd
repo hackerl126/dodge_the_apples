@@ -1,8 +1,6 @@
 extends Node
 
-
 var world=null
-
 
 func instance_node(node,location,parent,rotation):
 	var node_instance=node.instantiate()

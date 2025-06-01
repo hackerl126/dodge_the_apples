@@ -1,0 +1,124 @@
+[gd_scene load_steps=6 format=3 uid="uid://ikuavhm43q6v"]
+
+[ext_resource type="Script" uid="uid://c1bspdv5awvjb" path="res://control.gd" id="1_iljke"]
+[ext_resource type="FontFile" uid="uid://b7r5r1natiqe2" path="res://fonts/仓耳玄三04-W05.ttf" id="2_6ovdc"]
+[ext_resource type="Texture2D" uid="uid://cuwlla2df284g" path="res://art/ButtonReleased.png" id="3_3nnk7"]
+[ext_resource type="Texture2D" uid="uid://kbrw3f66ridn" path="res://art/ButtonPressed.png" id="4_3wkhr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_poqkb"]
+font = ExtResource("2_6ovdc")
+font_size = 20
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iljke")
+
+[node name="UpLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.65
+anchor_right = 0.5
+anchor_bottom = 0.65
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+text = "上"
+label_settings = SubResource("LabelSettings_poqkb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Up" type="TouchScreenButton" parent="UpLabel"]
+position = Vector2(-12, -10)
+texture_normal = ExtResource("3_3nnk7")
+texture_pressed = ExtResource("4_3wkhr")
+
+[node name="DownLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.9
+anchor_right = 0.5
+anchor_bottom = 0.9
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+text = "下"
+label_settings = SubResource("LabelSettings_poqkb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Down" type="TouchScreenButton" parent="DownLabel"]
+position = Vector2(-12, -10)
+texture_normal = ExtResource("3_3nnk7")
+texture_pressed = ExtResource("4_3wkhr")
+
+[node name="LeftLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.775
+anchor_right = 0.2
+anchor_bottom = 0.775
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+text = "左"
+label_settings = SubResource("LabelSettings_poqkb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Left" type="TouchScreenButton" parent="LeftLabel"]
+position = Vector2(-12, -10)
+texture_normal = ExtResource("3_3nnk7")
+texture_pressed = ExtResource("4_3wkhr")
+
+[node name="RightLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8
+anchor_top = 0.775
+anchor_right = 0.8
+anchor_bottom = 0.775
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+text = "右"
+label_settings = SubResource("LabelSettings_poqkb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Right" type="TouchScreenButton" parent="RightLabel"]
+position = Vector2(-12, -10)
+texture_normal = ExtResource("3_3nnk7")
+texture_pressed = ExtResource("4_3wkhr")
+
+[node name="ShootLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8
+anchor_top = 0.65
+anchor_right = 0.8
+anchor_bottom = 0.65
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+text = "射击"
+label_settings = SubResource("LabelSettings_poqkb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Shoot" type="TouchScreenButton" parent="ShootLabel"]
+position = Vector2(-12, -10)
+texture_normal = ExtResource("3_3nnk7")
+texture_pressed = ExtResource("4_3wkhr")
