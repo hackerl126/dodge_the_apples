@@ -58,10 +58,6 @@ stream = ExtResource("4_osddi")
 
 [node name="HUD" parent="." instance=ExtResource("3_3v8pn")]
 
-[connection signal="hit" from="Player" to="." method="game_over"]
-[connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
-[connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
-[connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
 [connection signal="DownDown" from="HUD" to="." method="change_background_color"]
 [connection signal="DownDown" from="HUD" to="Player" method="_on_HUD_DownDown"]
 [connection signal="DownUp" from="HUD" to="Player" method="_on_HUD_DownUp"]

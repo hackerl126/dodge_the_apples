@@ -17,13 +17,15 @@ func _ready():
 	curve.add_point(Vector2.ZERO)
 	curve.add_point(Vector2(windowsize.x,0.0))
 	curve.add_point(Vector2(windowsize.x,windowsize.y*0.9))
-	
 	$MobPath.curve=curve
-
+	
+	$Player.hit.connect(game_over)
+	$MobTimer.timeout.connect(_on_MobTimer_timeout)
+	$ScoreTimer.timeout.connect(_on_ScoreTimer_timeout)
+	$StartTimer.timeout.connect(_on_StartTimer_timeout)
 
 func _exit_tree():
 	Global.world=null
-
 
 func game_over():
 	$ScoreTimer.stop()
@@ -52,7 +54,6 @@ func new_game():
 	$HUD.ctrlShow()
 	
 
-
 func _on_MobTimer_timeout():
 	add_mob()
 	if(score>=50):
@@ -64,7 +65,6 @@ func _on_ScoreTimer_timeout():
 	score += 1
 	$HUD.update_score(score)
 	score_update_state()
-
 
 func _on_StartTimer_timeout():
 	$MobTimer.start()
@@ -98,7 +98,6 @@ func score_update_state():
 func _on_HUD_revive():
 	revive=true
 	new_game()
-
 
 func _on_HUD_notrevive():
 	revive=false
