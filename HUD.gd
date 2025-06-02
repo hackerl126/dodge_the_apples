@@ -1,40 +1,14 @@
 extends CanvasLayer
 
 signal start_game
-
-signal UpUp
-signal UpDown
-signal DownDown
-signal DownUp
-signal LeftUp
-signal LeftDown
-signal RightUp
-signal RightDown
-signal ShootDown
-signal ShootUp
-
 signal revive
 signal notrevive
 
 func _ready():
-	ctrlHide()
-	
 	$Control.hide()
 	$ReviveLabel.hide()
 	$NotReviveLabel.hide()
 	$ReviveVideo.hide()
-	
-	$UpLabel/Up.pressed.connect(func(): emit_signal("UpDown"))
-	$UpLabel/Up.released.connect(func(): emit_signal("UpUp"))
-	$DownLabel/Down.pressed.connect(func(): emit_signal("DownDown"))
-	$DownLabel/Down.released.connect(func(): emit_signal("DownUp"))
-	$LeftLabel/Left.pressed.connect(func(): emit_signal("LeftDown"))
-	$LeftLabel/Left.released.connect(func(): emit_signal("LeftUp"))
-	$RightLabel/Right.pressed.connect(func(): emit_signal("RightDown"))
-	$RightLabel/Right.released.connect(func(): emit_signal("RightUp"))
-	
-	$ShootLabel/Shoot.pressed.connect(func(): emit_signal("ShootDown"))
-	$ShootLabel/Shoot.released.connect(func(): emit_signal("ShootUp"))
 	
 	$StartLabel/Start.pressed.connect(_on_Start_pressed)
 	$ReviveLabel/Revive.pressed.connect(_on_Revive_pressed)
@@ -50,8 +24,6 @@ func show_message(text,time):
 
 func show_game_over():
 	show_message("你被林檎击中力\n（恼）",1)
-	ctrlHide()
-	
 	$Control.hide()
 	await $MessageTimer.timeout
 	show_message("是否\n看视频复活？",1)
@@ -71,20 +43,6 @@ func update_score(score):
 func _on_StartButton_pressed():
 	$StartButton.hide()
 	emit_signal("start_game")
-
-func ctrlShow():
-	$UpLabel.show()
-	$DownLabel.show()
-	$LeftLabel.show()
-	$RightLabel.show()
-	$ShootLabel.show()
-
-func ctrlHide():
-	$UpLabel.hide()
-	$DownLabel.hide()
-	$LeftLabel.hide()
-	$RightLabel.hide()
-	$ShootLabel.hide()
 
 func _on_Start_pressed():
 	emit_signal("start_game")

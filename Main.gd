@@ -27,6 +27,7 @@ func _ready():
 	$HUD.start_game.connect(new_game)
 	$HUD.revive.connect(_on_HUD_revive)
 	$HUD.notrevive.connect(_on_HUD_notrevive)
+	$HUD/Control.control_pressed.connect(change_background_color)
 
 func _exit_tree():
 	Global.world=null
@@ -53,7 +54,6 @@ func new_game():
 	score_update_state()
 	$HUD.show_message("3秒准备时间",3)
 	$Music.play()
-	$HUD.ctrlShow()
 	$HUD/Control.show()
 
 func _on_MobTimer_timeout():
@@ -104,6 +104,6 @@ func _on_HUD_revive():
 func _on_HUD_notrevive():
 	revive=false
 
-func change_background_color():
+func change_background_color(name):
 	if(score>=30):
 		$ColorRect.color=Color(randf_range(0,1),randf_range(0,1),randf_range(0,1),randf_range(0,1))
