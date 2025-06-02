@@ -73,6 +73,3 @@ stream = ExtResource("4_osddi")
 [connection signal="UpDown" from="HUD" to="." method="change_background_color"]
 [connection signal="UpDown" from="HUD" to="Player" method="_on_HUD_UpDown"]
 [connection signal="UpUp" from="HUD" to="Player" method="_on_HUD_UpUp"]
-[connection signal="notrevive" from="HUD" to="." method="_on_HUD_notrevive"]
-[connection signal="revive" from="HUD" to="." method="_on_HUD_revive"]
-[connection signal="start_game" from="HUD" to="." method="new_game"]

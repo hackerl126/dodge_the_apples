@@ -153,7 +153,7 @@ position = Vector2(-12, -10)
 texture_normal = ExtResource("3_yv7sh")
 texture_pressed = ExtResource("4_2x7kh")
 
-[node name="Label6" type="Label" parent="."]
+[node name="StartLabel" type="Label" parent="."]
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.84
@@ -168,12 +168,12 @@ label_settings = SubResource("LabelSettings_72drk")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Start" type="TouchScreenButton" parent="Label6"]
+[node name="Start" type="TouchScreenButton" parent="StartLabel"]
 position = Vector2(-85, -24)
 scale = Vector2(2.5, 1)
 texture_normal = ExtResource("5_otiqm")
 
-[node name="Label7" type="Label" parent="."]
+[node name="ReviveLabel" type="Label" parent="."]
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.84
@@ -188,12 +188,12 @@ label_settings = SubResource("LabelSettings_72drk")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Revive" type="TouchScreenButton" parent="Label7"]
+[node name="Revive" type="TouchScreenButton" parent="ReviveLabel"]
 position = Vector2(-85, -24)
 scale = Vector2(2.5, 1)
 texture_normal = ExtResource("5_otiqm")
 
-[node name="Label8" type="Label" parent="."]
+[node name="NotReviveLabel" type="Label" parent="."]
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.74
@@ -208,7 +208,7 @@ label_settings = SubResource("LabelSettings_72drk")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NotRevive" type="TouchScreenButton" parent="Label8"]
+[node name="NotRevive" type="TouchScreenButton" parent="NotReviveLabel"]
 position = Vector2(-75, -24)
 scale = Vector2(2.5, 1)
 texture_normal = ExtResource("5_otiqm")
@@ -224,5 +224,3 @@ stream = ExtResource("6_igrm7")
 expand = true
 
 [node name="Control" parent="." instance=ExtResource("7_1and6")]
-
-[connection signal="timeout" from="MessageTimer" to="." method="_on_MessageTimer_timeout"]

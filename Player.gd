@@ -23,7 +23,7 @@ func _ready():
 
 
 func _process(delta):
-	var velocity = Vector2.ZERO # The player's movement vector.
+	var velocity = Vector2.ZERO
 	if  rightDOWN==true:
 		velocity.x += 1
 		
@@ -58,10 +58,8 @@ func start(pos):
 
 
 func _on_Player_body_entered(_body):
-	
-	hide() # Player disappears after being hit.
+	hide()
 	emit_signal("hit")
-	# Must be deferred as we can't change physics properties on a physics callback.
 	$CollisionShape2D.set_deferred("disabled", true)
 
 
@@ -70,51 +68,35 @@ func shoot():
 	startshoot=false
 	$ShootTimer.start()
 
+func _on_ShootTimer_timeout():
+	startshoot=true
 
 func _on_HUD_UpUp():
 	upDOWN=false
 
-
 func _on_HUD_UpDown():
 	upDOWN=true
-
 
 func _on_HUD_DownUp():
 	downDOWN=false
 
-
 func _on_HUD_DownDown():
 	downDOWN=true
-
-
-
 
 func _on_HUD_RightUp():
 	rightDOWN=false
 
-
 func _on_HUD_LeftDown():
 	leftDOWN=true
-
 
 func _on_HUD_LeftUp():
 	leftDOWN=false
 
-
 func _on_HUD_RightDown():
 	rightDOWN=true
 
-
-func _on_ShootTimer_timeout():
-	startshoot=true
-
-
 func _on_HUD_ShootDown():
 	shootDOWN=true
-
-
-
-
 
 func _on_HUD_ShootUp():
 	shootDOWN=false

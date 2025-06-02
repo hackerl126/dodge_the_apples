@@ -20,8 +20,8 @@ func _ready():
 	ctrlHide()
 	
 	$Control.hide()
-	$Label7.hide()
-	$Label8.hide()
+	$ReviveLabel.hide()
+	$NotReviveLabel.hide()
 	$ReviveVideo.hide()
 	
 	$UpLabel/Up.pressed.connect(func(): emit_signal("UpDown"))
@@ -36,9 +36,9 @@ func _ready():
 	$ShootLabel/Shoot.pressed.connect(func(): emit_signal("ShootDown"))
 	$ShootLabel/Shoot.released.connect(func(): emit_signal("ShootUp"))
 	
-	$Label6/Start.pressed.connect(_on_Start_pressed)
-	$Label7/Revive.pressed.connect(_on_Revive_pressed)
-	$Label8/NotRevive.pressed.connect(_on_NotRevive_pressed)
+	$StartLabel/Start.pressed.connect(_on_Start_pressed)
+	$ReviveLabel/Revive.pressed.connect(_on_Revive_pressed)
+	$NotReviveLabel/NotRevive.pressed.connect(_on_NotRevive_pressed)
 	
 	$MessageTimer.timeout.connect(func(): $MessageLabel.hide())
 
@@ -56,14 +56,14 @@ func show_game_over():
 	await $MessageTimer.timeout
 	show_message("是否\n看视频复活？",1)
 	$MessageTimer.stop()
-	$Label7.show()
-	$Label8.show()
+	$ReviveLabel.show()
+	$NotReviveLabel.show()
 
 func restart_game():
 	$MessageLabel.text = "躲避林檎"
 	$MessageLabel.show()
 	await get_tree().create_timer(1).timeout
-	$Label6.show()
+	$StartLabel.show()
 
 func update_score(score):
 	$ScoreLabel.text = "分数："+str(score)
@@ -88,11 +88,11 @@ func ctrlHide():
 
 func _on_Start_pressed():
 	emit_signal("start_game")
-	$Label6.hide()
+	$StartLabel.hide()
 
 func _on_Revive_pressed():
-	$Label7.hide()
-	$Label8.hide()
+	$ReviveLabel.hide()
+	$NotReviveLabel.hide()
 	$ReviveVideo.show()
 	$MessageLabel.hide()
 	await playvideo()
@@ -101,10 +101,10 @@ func _on_Revive_pressed():
 
 func playvideo():
 	$ReviveVideo.play()
-	await get_tree().create_timer(10).timeout
+	await $ReviveVideo.finished
 
 func _on_NotRevive_pressed():
 	emit_signal("notrevive")
 	restart_game()
-	$Label7.hide()
-	$Label8.hide()
+	$ReviveLabel.hide()
+	$NotReviveLabel.hide()

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://ikuavhm43q6v"]
 
-[ext_resource type="Script" uid="uid://c1bspdv5awvjb" path="res://control.gd" id="1_iljke"]
+[ext_resource type="Script" uid="uid://c1bspdv5awvjb" path="res://Control.gd" id="1_6ovdc"]
 [ext_resource type="FontFile" uid="uid://b7r5r1natiqe2" path="res://fonts/仓耳玄三04-W05.ttf" id="2_6ovdc"]
 [ext_resource type="Texture2D" uid="uid://cuwlla2df284g" path="res://art/ButtonReleased.png" id="3_3nnk7"]
 [ext_resource type="Texture2D" uid="uid://kbrw3f66ridn" path="res://art/ButtonPressed.png" id="4_3wkhr"]
@@ -16,7 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_iljke")
+script = ExtResource("1_6ovdc")
 
 [node name="UpLabel" type="Label" parent="."]
 layout_mode = 1

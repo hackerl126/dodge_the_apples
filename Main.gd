@@ -23,6 +23,10 @@ func _ready():
 	$MobTimer.timeout.connect(_on_MobTimer_timeout)
 	$ScoreTimer.timeout.connect(_on_ScoreTimer_timeout)
 	$StartTimer.timeout.connect(_on_StartTimer_timeout)
+	
+	$HUD.start_game.connect(new_game)
+	$HUD.revive.connect(_on_HUD_revive)
+	$HUD.notrevive.connect(_on_HUD_notrevive)
 
 func _exit_tree():
 	Global.world=null
@@ -34,8 +38,6 @@ func game_over():
 	$Music.stop()
 	$DeathSound.play()
 	$ColorRect.color=Color(0.22,0.21,0.13,1)
-	
-
 
 func new_game():
 	get_tree().call_group("mobs", "queue_free")
